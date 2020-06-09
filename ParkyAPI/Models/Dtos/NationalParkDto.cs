@@ -9,9 +9,9 @@ namespace ParkyAPI.Models.Dtos
     public class NationalParkDto
     {
         public int Id { get; set; }
-        //[Required]
+        [Required]
         public string Name { get; set; }
-        //[Required]
+        [Required]
         public string State { get; set; }
         public byte[] Picture { get; set; }
         public DateTime Created { get; set; }
