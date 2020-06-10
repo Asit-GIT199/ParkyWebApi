@@ -11,8 +11,10 @@ using ParkyAPI.Repository.IRepository;
 
 namespace ParkyAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/nationalparks")]
+    //[Route("api/[controller]")]
     [ApiController]
+    //[ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNP")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParksController : ControllerBase
     {
@@ -92,7 +94,8 @@ namespace ParkyAPI.Controllers
             }
 
             //return Ok();
-            return CreatedAtRoute("GetNationalPark", new { nationalParkId = nationalParkObj.Id }, nationalParkObj);
+            return CreatedAtRoute("GetNationalPark", new { version= HttpContext.GetRequestedApiVersion().ToString(), 
+                nationalParkId = nationalParkObj.Id }, nationalParkObj);
         }
 
         [Route("{nationalParkId:int}", Name = "UpdateNationalPark")]

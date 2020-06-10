@@ -13,7 +13,7 @@ using ParkyAPI.Repository.IRepository;
 namespace ParkyAPI.Controllers
 {
     //[Route("api/Trails")]
-    [Route("api/trails")]
+    [Route("api/v{version:apiVersion}/trails")]
     [ApiController]
     //[ApiExplorerSettings(GroupName = "ParkyOpenAPISpecTrails")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -69,7 +69,7 @@ namespace ParkyAPI.Controllers
 
         }
 
-        [HttpGet("[action]/{nationalParkId:int}")]
+        [HttpGet("[action]/{nationalParkId:int}")]//[action] same as that of the action method
         [ProducesResponseType(200, Type = typeof(TrailDto))]
         [ProducesResponseType(404)]
         [ProducesDefaultResponseType]
